@@ -1,0 +1,43 @@
+{% extends "base/main.html" %}
+
+{% block body %}
+    {% include "include/super_nav.html" %}
+    <div class="col-12 overflow-auto pt-3" style="height: 500px; overflow: auto;">
+        {% if contacts %}
+            {% for contact in contacts %}
+                <div class="alert alert-light">
+                    <div>
+                        <a href="#" data-toggle="collapse" data-target="#collapse{{contact.id}}" aria-expanded="true" style="text-decoration: none;">
+                            <i class="icon-action text-dark fa fa-user fa-2x ml-4"></i>
+                            <span class="title text-dark text-bold h4" >{{ contact.get_full_name }}</span>
+                        </a>
+                    </div>
+                    <div class="collapse" id="collapse{{contact.id}}">
+                        <div class="card-body col-12">
+                            {% if contact.get_number %}
+                                <ul class="list-group">
+                                    {% for number in contact.get_number %}
+                                        <li class="list-group-item list-group-item-light text-dark text-bold text-center">{{ number.PhoneNumber }}</li>
+                                    {% endfor %}
+                                    <li class="list-group-item list-group-item-light text-dark text-bold text-center">
+                                        <a href="{% url 'phonenumber:delete' contact.id %}" class="btn btn-danger"> حذف مخاطب <i class="fa fa-remove"></i></a>
+                                        <a href="{% url 'phonenumber:update' contact.id %}" class="btn btn-warning">ویرایش اطلاعات <i class="fa fa-edit"></i></a>
+                                    </li>
+                                </ul>
+                            {% else %}
+                                <h6>شماره ای ثبت نشده</h6>
+                            {% endif %}
+                        </div>
+                    </div> 
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="alert alert-warning">
+                <h4 class="text-center">هیچ مخاطبی وجود ندارد!</h4>
+            </div>
+        {% endif %}
+    </div>
+    {% include "include/sub_nav.html" %}
+
+
+{% endblock body %}

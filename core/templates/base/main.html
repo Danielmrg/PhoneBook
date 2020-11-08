@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,
+      user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>basic</title>
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-rtl.css' %}">
+        <link href="{% static 'fontawesome/css/all.css' %}" rel="stylesheet">
+        <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/xb-niloofar" type="text/css"/>
+    </head>
+    <body style="font-family: 'XBNiloofarRegular';">
+        <div class="container mx-auto jumbotron col-5 m-5 p-1 overflow-hidden">
+            {% block body %}
+            
+            {% endblock body %}
+        </div>
+    <script src="{% static 'bootstrap/js/jquery-3.3.1.min.js' %}" crossorigin="anonymous"></script>
+    <script src="{% static 'bootstrap/js/popper.min.js' %}" crossorigin="anonymous"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.js' %}" crossorigin="anonymous"></script>
+    <script defer src="{% static 'fontawesome/js/all.js' %}"></script>
+    </body>
+</html>
